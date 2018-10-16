@@ -1,0 +1,582 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <!-- Vue JS Put this in the HTML section in JSFiddle! -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+<style>
+table.responsive-table thead {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 50px;  
+  line-height: 3em;
+  background: #eee;
+  display: table;
+
+}
+
+
+
+body {
+  padding-top: 50px;
+}
+
+.navbar {
+  padding: 0 15px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  background-color: #7dcdf4
+}
+
+.navbar a {
+  color: black;
+/*  line-height: 2em;  */
+/*後來改成2em 避免露餡 */
+/*如果要撐開區塊的高度，用padding/margin比較好，
+line-height是用於文字上的間距，所以多半都用預設值，必免文字自動縮放時，斷成二行間距時，問題就會產生了
+*/
+  padding: 10px
+
+}
+
+.table-area {
+  position: relative;
+  z-index: 0;
+  margin-top: 50px;
+}
+
+table.responsive-table {
+  display: table;
+  /* required for table-layout to be used (not normally necessary; included for completeness) */
+  table-layout: fixed;
+  /* this keeps your columns with fixed with exactly the right width */
+  width: 100%;
+  /* table must have width set for fixed layout to work as expected */
+  height: 100%;
+}
+
+table.responsive-table thead {
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+/*  width: 100%; */
+  height: 50px;
+  line-height: 3em;  /*th 格子的高度  */
+  background: #eee;
+  table-layout: fixed;
+  display: table;
+}
+
+
+
+table.responsive-table td {
+  line-height: 2em;
+}
+
+table.responsive-table tr > td,
+table.responsive-table th {
+  text-align: center;
+  background: #eee;
+  font-size: 10px;
+  white-space:normal;
+  word-break:break-all;
+}
+
+span.up {
+  font-size: 26px;
+  color: blue;
+   padding: 3px; width: 10px;
+   /*display: inline-block;  */
+   /* 1002 Add*/
+}
+
+span.down {
+  font-size: 26px;
+
+}
+
+button {
+     width: 30%;
+     height: 20%;
+     padding:0px;
+}
+
+
+.btn-plus-up {
+    background-color: rgb(192,192,192);
+    border-radius: 90%;
+
+/*    background-image: url(https://www.iconfinder.com/icons/1282962/add_hide_minus_remove_icon);  */
+}
+
+
+.btn-minus-up {
+    background-color: rgb(218,218,218);
+    
+}
+
+
+.num {
+  font-size: : 12px;
+
+}
+
+/* From developer tool copy and change 18/10/1*/
+.table-bordered td, .table-bordered th {
+    border: 1.5px solid #7dcdf4;
+}
+
+tr {
+  font-size: 25px;
+}
+
+td {
+  font-size: 65%;
+
+}
+
+.bksize {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/*2018-10-01新增*/
+.table td,.table th{  min-width: 150px;  text-align: center; }
+.table td span { padding: 0 10px; width: 50px;  display: inline-block; }
+
+
+/* FOR iPAD 1024*768  horizontal 181015 add*/
+@media screen and (max-width: 1028px) {
+  table.responsive-table thead {
+  position: fixed;
+/*  top: 0;  */
+  left: 0;
+  right: 0;
+  width: 100%;
+/*  height: auto; */
+  top:50px;
+/*  height: 50px;    */
+  line-height: 3em;
+  background: #eee;
+/*  table-layout: fixed;  */
+  display: table;
+
+}
+
+  .table-area {
+  position: relative;
+  z-index: 0;
+  margin-top: 84px;
+}
+
+}
+
+/* FOR iPAD 768*1024  vertical 181015 add*/
+@media screen and (max-width: 768px) {
+  table.responsive-table thead {
+  position: fixed;
+/*  top: 0;  */
+  left: 0;
+  right: 0;
+  width: 100%;
+/*  height: auto; */
+  top:50px;
+  height: 50px;  
+  line-height: 3em;
+  background: #eee;
+/*  table-layout: fixed;  */
+  display: table;
+
+}
+
+  .table-area {
+  position: relative;
+  z-index: 0;
+  margin-top: 84px;
+}
+
+}
+
+
+/* FOR iPHONE6 375*667  181015 add*/
+@media screen and (max-width: 377px) {
+  table.responsive-table thead {
+  position: fixed;
+/*  top: 0;  */
+  left: 0;
+  right: 0;
+  width: 100%;
+/*  height: auto; */
+  top:50px;
+  height: 50px;  
+  line-height: 3em;
+  background: #eee;
+/*  table-layout: fixed;  */
+  display: table;
+
+}
+
+  .table-area {
+  position: relative;
+  z-index: 0;
+  margin-top: 175px;
+}
+
+}
+
+@media screen and (max-width: 321px) {
+  table.responsive-table thead {
+  position: fixed;
+/*  top: 0;  */
+  left: 0;
+  right: 0;
+  width: 100%;
+/*  height: auto; */
+  top:50px;
+  height: 50px;  
+  line-height: 3em;
+  background: #eee;
+/*  table-layout: fixed;  */
+  display: table;
+
+}
+
+  .table-area {
+  position: relative;
+  z-index: 0;
+  margin-top: 325px;
+}
+
+}
+
+
+.nav_list {margin: 0;}
+.nav_list li { display: inline-block; padding: 10px 20px; }
+
+</style>
+
+</head>
+
+<body>
+<div id="app">
+
+<!-- 修改後架構 -->
+<header id = "top">
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <!--button for collapse1015 -->
+
+    <a class="navbar-brand" href="#" id="t1">neonexus</a>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#" id ="bn1">Back to Bottom <span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+      <div id='collapseElements' class='collapse navbar-toggleable-xs'>
+          <ul class="nav_list">
+              <li><a id="plan" href="#">Plan</a></li>
+              <li><a id="actual" href="#">Actual</a></li>   
+              <li><a href="#">Submit</a></li>
+          </ul>
+      </div>
+    <button class='navbar-toggler hidden-sm-up hidden-sm-up' data-toggle='collapse' data-target='#collapseElements'>
+          &#9776;
+    </button>
+  </nav>
+</header>
+
+<section class="content-area">
+  <div class="table-area">
+
+  <table class="responsive-table table-bordered" align="left" style="border; width = 100%">
+  <thead class="w-100">
+    <tr>
+      <th scope="col" v-for="(book, key) in books" :value="key">{{ book.chapter }}</th>
+<!-- vue for loop for thead (book)-->
+    </tr>
+  </thead>
+  <tbody id="demo">
+
+
+  </tbody>
+<!-- vue for loop for thead (level)  
+<tr>
+      <th scope="col" v-for="(level, key) in levels" :value="key">{{ level.name }}</th>
+
+    </tr>  -->
+</table>
+
+  </div>
+</section>
+
+</div>
+
+ <footer>
+     © 2018 Jinwei CORPORATION All Rights Reserved. <!--瀏覽器建議使用IE 9.0以上版本-->
+     <div id="b1">
+ <!--       <ul>
+            <li><a href="/" >English</a></li>
+            <li><a href="/ch" >繁體中文</a></li>
+            <li><a href="?lang=jp" >日本語</a></li>
+            <li><a href="?lang=es" >Español</a></li>
+        </ul>  -->
+     </div>
+ </footer>
+
+
+<script>
+    var table = '';
+    var rows = 23;
+    var cols =20;
+    var empty = ' ';
+    var bookst = [];   // book start sheet array
+    var bookend = [];  // book end sheet array
+    var nofb = 20;     //number of books
+    var startb = 1;    //start book # from 1
+    var endb = 10;    //end book # from 10
+    // define material array for left column 
+    var arrmateriallevel =[
+    '7A','6A','5A','4A','3A','2A','A','B','C','D','E','F','G','H','I','J','K',
+    'L','M','N','O','P','Q'
+    ];
+    // define book rule(1~10, 11~20)(start~end) and put into the array 
+    for (var b = 0; b < nofb; b++) {
+      bookst.push(startb)
+      bookend.push(endb)
+      startb += 10
+      endb += 10
+    }
+    console.log(bookst)
+    // 2層迴圈包覆 <tr> <td> level </td> <td> 格字</td> ...</tr>
+    // 這裡r要從0開始因為後面要用index取值
+    for (var r = 0; r < rows;r++) {
+
+      table += '<tr>';
+      table += '<td>' + arrmateriallevel[r] +'</td>'
+/*
+        for (var c = 1; c <= cols; c++) {
+          table += '<td>' + '<br>' + '<input type="button" style="background-image:url(https://www.iconfinder.com/icons/1282962/add_hide_minus_remove_icon)" class="btn-minus-up plan-btn">' +  '<span class="table-danger">' + 0 + '</span>' + '<button type ="button" class="btn-plus-up plan-btn">' + '<img src="icon_minus.png">' + '</button>' + '<hr>' +'<button class="btn-minus-down actual-btn">' + '-' + '</button>'+  '<span2>' + 0 + '</span2>' + '<button class="btn-plus-down actual-btn">' + '+' + '</button>'+ '<br>' + '</td>'
+        }
+        table += '</tr>';
+      }
+*/
+ // td中的行數共有cols=20行
+    for (var c = 0; c < cols; c++) {
+          table += '<td>' + '<br>' + '<button class="btn-minus-up plan-btn" >' + '-' + '</button>'+  '<span class="up">' + 0 + '</span>' + '<button class="btn-plus-up plan-btn">' + '+' + '</button>' + '<hr>' +'<button class="btn-minus-down actual-btn">' + '-' + '</button>'+  '<span class="down">' + 0 + '</span>' + '<button class="btn-plus-down actual-btn">' + '+' + '</button>'+ '<br>' + '</td>'
+        }
+
+    }
+    document.getElementById('demo').innerHTML = table;
+//    document.getElementById('demo').innerHTML = ('<table>' + table + '</table>')
+/*  This part is the failure trial!
+function add() {
+  var n = "num" + (r*c)
+  var x = document.getElementById("num1").innerHTML;
+  x = parseInt(x) +1;
+  document.getElementById("num1").innerHTML = x;
+}
+*/
+
+// default actual as hide
+$(document).ready(function() {
+  $(".btn-plus-down").hide();
+  $(".btn-minus-down").hide();
+});
+
+
+
+// disabled btn  1008 add
+
+$(function(){
+   $("#plan").click(function(){
+    $(".plan-btn").show();
+    $(".actual-btn").hide();
+    });
+
+   $("#actual").click(function(){
+   $(".plan-btn").hide();
+    $(".actual-btn").show();
+   });
+
+   });
+
+// button +- function
+$(function(){
+   $(".btn-plus-up").click(function(){
+      var target = $(this).parent().find("span.up");
+      var oldval = parseInt(target.html());
+      target.html(oldval + 1);
+   });
+   $(".btn-minus-up").click(function(){
+      var target = $(this).parent().find("span.up");
+      var oldval = parseInt(target.html());
+      if (oldval == 0) {
+        oldval ==0; }
+      else {
+      target.html(oldval - 1);
+    }
+   });
+
+});
+$(function(){
+   $(".btn-plus-down").click(function(){
+      var target = $(this).parent().find("span.down");
+      var oldval = parseInt(target.html());
+      target.html(oldval + 1);
+   });
+});
+
+$(function(){
+   $(".btn-minus-down").click(function(){
+      var target = $(this).parent().find("span.down");
+      var oldval = parseInt(target.html());
+      if (oldval == 0) {
+        oldval ==0; }
+      else {
+      target.html(oldval - 1);
+    }
+   });
+});
+
+$(function(){
+   $('#t1').click(function() {
+     $('html,body').animate({scrollTop:$('#top').offset().top}, "show");
+               return false;
+           });
+});
+
+
+$(function(){
+   $('#bn1').click(function() {
+     $('html,body').animate({scrollTop:$('#b1').offset().top}, "show");
+               return false;
+           });
+});
+
+
+/* scroll up func.
+$(function(){
+   $("#top").click(function(){
+      $('html,body').animate({scrollTop: '0px'}, 2000);
+  });
+});
+
+
+
+/*
+function minus() {
+  var n = "num" + (r*c)
+  var y = document.getElementById("num1").innerHTML;
+  y = parseInt(y) -1;
+  document.getElementById("num1").innerHTML = y;
+
+}
+*/
+
+/*            table += '<td>' + '<input list="numbers" width="10">' + '<datalist id="numbers">'+
+                   '<option value="0"> + <option value="1">' + '<option value="2">'+
+                '<option value="3">' + '</datalist>' + '</input type="submit">' +'</td>' ;
+*/
+
+
+
+// VueJS as below
+
+
+Vue.component('book-item', {
+  props:['book'],
+  template: '<tr>\
+    <th scope="row">{{ book.chapter }}</th>\
+    </tr>'
+
+
+});
+
+
+new Vue({
+  el: '#app',
+  data: {
+      counter: 3,
+      levels: [
+        { name: '#' },
+        { name: '7A'},
+        { name: '6A'},
+        { name: '5A'},
+        { name: '4A'},
+        { name: '3A'},
+        { name: '2A'},
+        { name: 'A'},
+        { name: 'B'},
+        { name: 'C'},
+        { name: 'D'},
+        { name: 'E'},
+        { name: 'F'},
+        { name: 'G'},
+        { name: 'H'},
+        { name: 'I'},
+        { name: 'J'},
+        { name: 'K'},
+        { name: 'L'},
+        { name: 'M'},
+        { name: 'N'},
+        { name: 'O'},
+        { name: 'P'},
+        { name: 'Q'},
+      ],
+      books: [
+        { chapter: '#' },
+        { chapter: ' 1~10' },
+        { chapter: '11~20' },
+        { chapter: '21~30' },
+        { chapter: '31~40' },
+        { chapter: '41~50' },
+        { chapter: '51~60' },
+        { chapter: '61~70' },
+        { chapter: '71~80' },
+        { chapter: '81~90' },
+        { chapter: '91~100' },
+        { chapter: '101~110' },
+        { chapter: '111~120' },
+        { chapter: '121~130' },
+        { chapter: '131~140' },
+        { chapter: '141~150' },
+        { chapter: '151~160' },
+        { chapter: '161~170' },
+        { chapter: '171~180' },
+        { chapter: '181~190' },
+        { chapter: '191~200' },
+
+      ],
+  },
+  methods: {
+     increase: function() {
+       this.counter +=  1;
+     },
+     decrease: function() {
+        this.counter -=1;
+           },
+
+
+  },
+})
+
+</script>
+
+
+
+</body>
+</html>
